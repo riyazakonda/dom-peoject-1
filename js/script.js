@@ -31,6 +31,14 @@ function generateToMessage(msg) {
   const div = document.createElement("div");
 
   div.innerText = msg;
-  div.className = "oast-message"; 
+  div.className = "toast-message toast-message-slide-in";
+
+  div.addEventListener("click", function () {
+    div.classList.remove("toast-message-slide-in");
+    div.classList.add("toast-message-slide-out");
+    div.addEventListener("animationend", function () {
+      div.remove();
+    });
+  });
   document.body.appendChild(div);
 }
